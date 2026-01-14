@@ -47,3 +47,6 @@ goals.json
 
 # Confidential configuration (contains personal merchant names)
 config.private.json
+
+# Confidential budget data (contains personal budget amounts)
+budgets.private.json

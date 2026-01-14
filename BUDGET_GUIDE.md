@@ -6,7 +6,20 @@ The budget management system allows you to set spending limits for categories an
 
 ## Budget Configuration
 
-Budgets are stored in `budgets.json`. The file supports three types of budgets:
+Budgets are configured in two files:
+
+### Public Budget Template (`budgets.json`)
+Contains an empty template structure. This file is included in the repository.
+
+### Private Budget File (`budgets.private.json`)
+Contains your personal budget amounts. This file is **excluded from git** via `.gitignore` to protect your privacy.
+
+**Setup:**
+1. Copy `budgets.private.json.example` to `budgets.private.json`
+2. Add your personal budget amounts
+3. The system automatically loads both files (private budgets override public if both exist)
+
+The file supports three types of budgets:
 
 1. **Monthly Budgets**: Fixed monthly spending limits per category
 2. **Annual Budgets**: Yearly spending limits (prorated for date ranges)
@@ -15,6 +28,8 @@ Budgets are stored in `budgets.json`. The file supports three types of budgets:
 ## Budget File Format
 
 ### Basic Structure
+
+Edit `budgets.private.json` (or create it from `budgets.private.json.example`):
 
 ```json
 {
@@ -81,7 +96,7 @@ Review the category totals in the summary report to understand your current spen
 
 ### Step 2: Set Initial Budgets
 
-Create or edit `budgets.json` with your target spending amounts:
+Create or edit `budgets.private.json` with your target spending amounts (copy from `budgets.private.json.example` if needed):
 
 ```json
 {
@@ -102,8 +117,16 @@ Create or edit `budgets.json` with your target spending amounts:
 
 ### Step 3: Run Analysis with Budgets
 
+The system automatically loads `budgets.private.json` if it exists:
+
 ```bash
-python pftrack.py --html --budget-config budgets.json
+python pftrack.py --html
+```
+
+Or specify a custom budget file:
+
+```bash
+python pftrack.py --html --budget-config budgets.private.json
 ```
 
 ## Budget Reports
@@ -247,9 +270,10 @@ View alerts in reports or use the AlertManager programmatically.
 
 ### Budget Not Showing in Reports
 
-- Ensure `budgets.json` exists in the project directory
+- Ensure `budgets.private.json` exists in the project directory (or use `--budget-config` to specify a different file)
 - Check JSON syntax is valid
 - Verify category names match exactly (case-sensitive)
+- The system automatically loads `budgets.private.json` if `budgets.json` is found in the same directory
 
 ### Incorrect Budget Calculations
 

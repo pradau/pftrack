@@ -138,20 +138,37 @@ When using `--html` or `--html-only`, the script generates:
 
 HTML reports are self-contained (no external dependencies) and can be opened in any web browser.
 
-## Category Configuration
+## Configuration
+
+### Category Configuration
 
 Categories are defined in two configuration files:
 
-### Public Configuration (`config.json`)
+#### Public Configuration (`config.json`)
 Contains generic, non-confidential keywords that can be safely shared publicly. This file is included in the repository.
 
-### Private Configuration (`config.private.json`)
+#### Private Configuration (`config.private.json`)
 Contains personal merchant names, specific store locations, and other confidential transaction keywords. This file is **excluded from git** via `.gitignore` to protect your privacy.
 
 **Setup:**
 1. Copy `config.private.json.example` to `config.private.json`
 2. Add your personal merchant names and transaction keywords
 3. The system automatically merges both configs when categorizing transactions
+
+### Budget Configuration
+
+Budgets are configured in two files:
+
+#### Public Budget Template (`budgets.json`)
+Contains an empty template structure. This file is included in the repository.
+
+#### Private Budget File (`budgets.private.json`)
+Contains your personal budget amounts. This file is **excluded from git** via `.gitignore` to protect your privacy.
+
+**Setup:**
+1. Copy `budgets.private.json.example` to `budgets.private.json`
+2. Add your personal budget amounts
+3. The system automatically loads both files (private budgets override public if both exist)
 
 **Configuration Structure:**
 Each category includes:

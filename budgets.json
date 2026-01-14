@@ -1,14 +1,6 @@
 {
-  "monthly_budgets": {
-    "Groceries": 500.00,
-    "Restaurants": 200.00,
-    "Gas/Transportation": 150.00,
-    "Entertainment": 100.00,
-    "Shopping": 200.00,
-    "Health": 100.00,
-    "Utilities": 200.00,
-    "Housing": 1500.00
-  },
+  "_comment": "Public budget template - copy to budgets.private.json and add your personal budget amounts",
+  "monthly_budgets": {},
   "annual_budgets": {},
   "category_budgets": {}
 }

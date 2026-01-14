@@ -19,19 +19,31 @@ class BudgetManager:
     in JSON format for easy editing.
     """
     
-    def __init__(self, budget_path: Optional[Path] = None):
+    def __init__(self, budget_path: Optional[Path] = None,
+                 private_budget_path: Optional[Path] = None):
         """Initialize budget manager with budget configuration.
         
         Args:
-            budget_path: Path to JSON budget configuration file.
+            budget_path: Path to JSON budget configuration file (public).
                         If None, creates empty budget manager.
+            private_budget_path: Path to private/confidential budget file.
+                                If None, looks for budgets.private.json in same directory as budget_path.
         """
         self.monthly_budgets: Dict[str, float] = {}
         self.annual_budgets: Dict[str, float] = {}
         self.category_budgets: Dict[str, Dict[str, float]] = {}
         
+        # Load public budget file
         if budget_path and budget_path.exists():
             self.load_budgets(budget_path)
+            
+            # Load private budget file if available
+            if private_budget_path is None:
+                # Default to budgets.private.json in same directory as budget_path
+                private_budget_path = budget_path.parent / 'budgets.private.json'
+            
+            if private_budget_path and private_budget_path.exists():
+                self._merge_budgets(private_budget_path)
     
     def load_budgets(self, budget_path: Path) -> None:
         """Load budgets from JSON configuration file.
@@ -65,6 +77,51 @@ class BudgetManager:
             raise ValueError(f"Invalid JSON in budget file: {e}")
         except KeyError as e:
             raise ValueError(f"Missing required key in budget file: {e}")
+    
+    def _merge_budgets(self, private_budget_path: Path) -> None:
+        """Merge private budget configuration into existing budgets.
+        
+        Private budgets override public budgets for the same categories.
+        
+        Args:
+            private_budget_path: Path to private budget JSON file
+            
+        Raises:
+            ValueError: If budget file is invalid
+        """
+        try:
+            with open(private_budget_path, 'r', encoding='utf-8') as f:
+                config = json.load(f)
+            
+            # Merge monthly budgets (private overrides public)
+            private_monthly = config.get('monthly_budgets', {})
+            self.monthly_budgets.update(private_monthly)
+            
+            # Merge annual budgets (private overrides public)
+            private_annual = config.get('annual_budgets', {})
+            self.annual_budgets.update(private_annual)
+            
+            # Merge category budgets (private overrides public)
+            private_category = config.get('category_budgets', {})
+            for category, budgets in private_category.items():
+                if category in self.category_budgets:
+                    self.category_budgets[category].update(budgets)
+                else:
+                    self.category_budgets[category] = budgets.copy()
+            
+            # Validate budget values are non-negative
+            for budgets in [self.monthly_budgets, self.annual_budgets]:
+                for category, amount in budgets.items():
+                    if amount < 0:
+                        raise ValueError(f"Budget amount for {category} cannot be negative: {amount}")
+            
+            for category_budgets in self.category_budgets.values():
+                for period, amount in category_budgets.items():
+                    if amount < 0:
+                        raise ValueError(f"Budget amount cannot be negative: {amount}")
+                        
+        except json.JSONDecodeError as e:
+            raise ValueError(f"Invalid JSON in private budget file: {e}")
     
     def get_monthly_budget(self, category: str) -> float:
         """Get monthly budget for a category.

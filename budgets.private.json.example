@@ -1,0 +1,24 @@
+{
+  "_comment": "This is an example template for budgets.private.json",
+  "_instructions": "Copy this file to budgets.private.json and add your personal budget amounts",
+  "_note": "This file is excluded from git via .gitignore to keep your personal budget data private",
+  
+  "monthly_budgets": {
+    "Groceries": 500.00,
+    "Restaurants": 200.00,
+    "Gas/Transportation": 150.00,
+    "Entertainment": 100.00,
+    "Shopping": 200.00,
+    "Health": 100.00,
+    "Utilities": 200.00,
+    "Housing": 1500.00,
+    "Cell Phone": 80.00,
+    "Internet": 60.00
+  },
+  "annual_budgets": {
+    "Travel": 3000.00,
+    "Computer": 2000.00,
+    "Home Repairs": 5000.00
+  },
+  "category_budgets": {}
+}
