@@ -64,13 +64,17 @@ The following files are properly excluded and will NOT be pushed to GitHub:
 **Risk Level:** Very Low - Just the bank name, no account information
 **Recommendation:** Acceptable - generic bank name reference
 
-### 3. Location-Specific Keywords
-**Status:** Removed during review
-**Items Removed:**
-- "PARKDALE GAS" from default categories (location-specific gas station)
-- "STOLEN CHURCH" from public config (specific restaurant name)
-**Risk Level:** Low - These were generic enough but removed for extra privacy
-**Recommendation:** Fixed - moved to private config if needed
+### 3. Location-Specific and Specific Merchant Names
+**Status:** Separated into private config
+**Items Moved to Private Config:**
+- All specific store names (e.g., "SAVE ON FOODS", "COSTCO", "MCDONALD")
+- Location-specific merchants (e.g., "PARKDALE GAS", "STOLEN CHURCH")
+- Specific company names (e.g., "ENMAX", "TELUS", "SHAW CABLESYSTEMS")
+- Chain restaurant names (e.g., "TIM HORTONS", "STARBUCKS")
+**Public Config Contains:**
+- Only generic keywords (e.g., "GROCERY", "RESTAURANT", "GAS", "UTILITY")
+**Risk Level:** Very Low - All specific names are in private config
+**Recommendation:** Fixed - public config is now truly generic
 
 ### 4. Test Data
 **Status:** Contains generic test data only
