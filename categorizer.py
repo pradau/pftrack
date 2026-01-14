@@ -115,7 +115,7 @@ class CategoryClassifier:
                 "priority": 1
             },
             "Gas/Transportation": {
-                "keywords": ["GAS", "PETRO", "SHELL", "PARKING", "ESSO", "MOBIL", "PARKDALE GAS"],
+                "keywords": ["GAS", "PETRO", "SHELL", "PARKING", "ESSO", "MOBIL"],
                 "priority": 1
             },
             "Utilities": {
