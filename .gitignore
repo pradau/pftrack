@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+reports/*.csv
+reports/*.html
+reports/*.png
+reports/*.pdf
+reports/*.xlsx
+reports/*.json
+!reports/.gitkeep
+
+# Data files (keep structure but not actual data)
+data/*.csv
+!data/.gitkeep
+
+# Manual transactions and backups
+manual_transactions.json
+*.backup
+backups/
+
+# Goals
+goals.json

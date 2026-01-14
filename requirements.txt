@@ -1,0 +1,18 @@
+# Personal Finance Tracker
+# Python 3.6+ required
+
+# Standard library modules:
+# - csv
+# - datetime
+# - json
+# - argparse
+# - pathlib
+# - dataclasses (Python 3.7+)
+# - typing
+
+# External dependencies:
+matplotlib>=3.5.0
+reportlab>=3.6.0
+openpyxl>=3.0.0
+pytest>=7.0.0
+

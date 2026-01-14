@@ -1,0 +1,95 @@
+{
+  "auto_tagging": {
+    "tax-deductible": {
+      "keywords": ["WORK", "BUSINESS", "OFFICE", "PROFESSIONAL"],
+      "categories": ["Work"]
+    },
+    "reimbursable": {
+      "keywords": ["TRAVEL", "MEAL", "EXPENSE"],
+      "categories": ["Travel", "Restaurants"]
+    },
+    "work-related": {
+      "keywords": ["WORK", "OFFICE", "BUSINESS"],
+      "categories": ["Work"]
+    }
+  },
+  "categories": {
+    "Cell Phone": {
+      "keywords": ["TELUS MOBILITY", "TELUS"],
+      "priority": 1
+    },
+    "Alcohol": {
+      "keywords": ["WINES & SPIRIT", "LIQUOR"],
+      "priority": 1
+    },
+    "Computer": {
+      "keywords": ["CBA*SOPHOS", "APPLE.COM", "HOSTPAPA WEB HOSTING", "WWW.PUREVPN.COM", "FS *fatcatsoftware", "1PASSWORD"],
+      "priority": 1
+    },
+    "Internet": {
+      "keywords": ["SHAW CABLESYSTEMS"],
+      "priority": 1
+    },
+    "Groceries": {
+      "keywords": ["GROCERY", "CO-OP", "SUPERSTORE", "SAFEWAY", "WALMART", "WAL-MART", "COSTCO", "NO FRILLS", "RCSS NURSERY", "SAVE ON FOODS", "COMMUNITY NATURAL FOODS", "COBS BREAD", "CHONGO`S PRODUCE MARKET", "WAYNE S BAGELS", "PEARSON'S BERRY FARM", "ANATOLIA TURKISH FOOD", "LONDON DRUGS", "A-MART", "DAVIDSTEA", "KOREANA MARKET", "E-MART", "VALLEY FOODS", "FARMER", "FRESHCO", "QUARTER SECTION FOOD", "BLUSH LANE", "SUPERMARKET"],
+      "priority": 2
+    },
+    "Restaurants": {
+      "keywords": ["RESTAURANT", "MCDONALD", "STARBUKO", "PIZZA", "TIM HORTONS", "SUBWAY", "PEKING GARDEN", "SHAWARMA", "KOREAN VILLAGE", "EUREST", "PHO PHAM", "NANS NOODLE HOUSE", "SQ *SESAME", "FRINGE COFFEE", "SMITTY'S", "SQ *GOOD TRADE COMPANY", "TST-ANGELS CAPPUCCINO", "CADENCE COFFEE", "GOOD EARTH", "MOLCAJETE CATERING", "MARI BAKESHOP", "MANNA KOREAN CUISINE", "KENSINGTON PUB", "SQ *WEEDS CAFE", "THE POST HOTEL", "LAGGAN'S MOUNTAIN BAKERY", "FAIRMONT CHATEAU", "RISTORANTE PULCINELLA", "MCCAIG CAFE", "MOMOKO SUSHI", "PHO 501", "ALVIN'S JAZZ CLUB", "COFFEE", "CAFE", "TST-UNA", "SAN DONG BANJEOM", "SQ *SEED N SALT", "THE ROASTERIE", "OEB BREAKFAST", "TWO HOUSE BREW", "THE HEXAGON BOARD GAME", "CUISINE", "CHILIS", "STARBUCKS", "BOWNESS VIETNAMESE RESTAU", "YYC STACK+PRESS PRE", "SQ *LICS", "LINA'S ITALIAN PIAZZA", "KE CHARCOAL GRILL & SU", "OGURAYA BAKERY", "CACIO E PEPE ITALIAN", "KITCHEN", "CONCESSION", "STOLEN CHURCH", "BAKERY", "RESTAU", "SUSHI", "PARIS BAGUETTE", "BURRITOS", "KOMBUCHA", "ICECREAM", "VENDING", "CATERING", "GLOBEFISH", "BREWING", "HIGHER GROUND CALGARY"],
+      "priority": 1
+    },
+    "Gas/Transportation": {
+      "keywords": ["GAS", "PETRO", "SHELL", "PARKING", "ESSO", "MOBIL", "PARKDALE GAS", "CENTEX", "HONDA WEST", "PARK INDIGO", "FCL @ SERVICE", "FGP40011 MOUNTVIEW", "PARKPLUS", "ALBERTA MOTOR ASSOC", "INDIGO PARK", "COOP INN GBAR", "IMPARK", "TOYOTA", "HONDA"],
+      "priority": 1
+    },
+    "Utilities": {
+      "keywords": ["ENMAX", "UTILITY BILL", "HYDRO", "ELECTRIC", "ATCO ENERGY"],
+      "priority": 3
+    },
+    "Housing": {
+      "keywords": ["MORTGAGE", "RENT", "INSURANCE INTACT", "PROPERTY TAX", "RONA", "THE HOME DEPOT", "EKKO CABINETRY", "PETE THE PLUMBER", "CALGARY AIR HEATING", "MR. FIREPLACE"],
+      "priority": 1
+    },
+    "Shopping": {
+      "keywords": ["U OF C BOOKSTORE", "AMAZON", "CANADIAN TIRE", "DOLLARAMA", "HOMESENSE", "NANAO KIMONO", "CALENDAR CLUB OF CANADA", "EDELWEISS", "STRUCTUBE", "SQ *ANNABELLE'S SILVER", "WINNERS", "SP ROCKY MOUNTAIN", "UCALGARY FINANCE", "KENSINGTON / INDIESCENTS", "HUDSON", "IKEA", "ASA KOMONO GOSQ.COM", "SQ *CALGARY JAPANESE COMM", "NEKOTO BOOKS", "SMIRKINGCAT/YUKI TANA", "BLINKAY CANMORE", "TST-Native Tongues", "ROI'S RESALE", "LAMBERT-KIPP PHARMACY", "FAIRMONT MOUNTAINSIDE", "CALGARY KOREAN ASSOCIATI", "PBCEDMONTONAB1358", "TST-Arbour On Whyte", "VILLAGE GOODS", "TIKI 8", "HAIR", "NATGEO MAG", "DOLLAR STORE", "IMAGINUS CANADA LIMITE TORONTO, ON", "MEOW FOUNDATION", "AMZN Mktp", "ANNE GOODWIN", "MICHAELS", "FEDEX"],
+      "priority": 1
+    },
+    "Clothing": {
+      "keywords": ["GOODWILL", "TREND CLOTHING", "PLATO'S CLOSET", "PLATOS CLOSET", "MARSHALLS", "MARK'S STORE", "SPORT CHEK", "SOLETOSOULFOOTWEA", "REITMANS", "KENSINGTON KONSIGNMENT", "BBTC Canmore", "CROSSWAY COMMUNITY THRIFT"],
+      "priority": 1
+    },
+    "Health": {
+      "keywords": ["SHOPPERS DRUG MART", "SEPHORA", "UCALGARY ACTIVE LIVING", "LS BIKE AND BREW INC", "MONTGOMERY DENTAL", "FYIDOCTORS", "VARSITY PHARMACY", "YOGA", "FELIX HEALTH INC.", "WELLNESS JOA", "ECHO CALGARY MONTREAL, QC", "DENTAL", "WELL.CA", "MERCHANDISE IMPRESSIONS"],
+      "priority": 1
+    },
+    "Pets": {
+      "keywords": ["PET PLANET", "PAWSHAKE", "VETERINARY"],
+      "priority": 0
+    },
+    "Finance": {
+      "keywords": ["TRADINGVIEW", "INTUIT *TURBOTAX", "LAWDEPOT", "INTEREST CHARGE", "SERVICE CHARGE", "THE LUND LOOP"],
+      "priority": 1
+    },
+    "Travel": {
+      "keywords": ["WESTJET", "JEJU AIR", "EXPEDIA", "JAPAN WIRELESS", "SERVICE CANADA", "UBER", "APAHOTEL", "HOTEL", "KOJIN TAXI CO-OPERATIVE", "CALGARY AIRPORT", "TOKYO", "SOKCHO", "SEOUL", "KYOTO", "KRW @", "JPY @", "CASH ADV/BT/CONV CHQ FEE", "CASH INTEREST"],
+      "priority": 0
+    },
+    "Entertainment": {
+      "keywords": ["AMAZON CHANNELS", "ONEBOOKSHEL", "NETFLIX", "SPOTIFY", "TICKETMASTER", "X CORP", "THE PLAZA THEATRE", "FAMOUS PLAYER", "CINEPLEX", "PAGES BOOKS", "U OF C THEATRE BOX", "DISNEY PLUS", "FAIR'S FAIR", "LM Country Hills", "LANDMARK WEB TICKETING", "WWW.JAZZYYC.COM", "CIRQUE DU SOLEIL", "THE FOLK FESTIVAL", "THE NEXT PAGE", "PARKS/PARCS CANADA", "KOOTENAY REDSTREAK", "THE BOOK CELLAR", "SUBSTACK", "THEATRE", " BOOK ", "BOOK", " BOOKSTORE ", "BOOKSTORE", "WWW.TRAILSPORTS.COM", "FRIENDS SOUTHERN JUBILEE", "LS LAKESIDE BIKE CO."],
+      "priority": 1
+    },
+    "Income": {
+      "keywords": ["PAYROLL", "DEPOSIT", "INTEREST", "CASH BACK CREDIT", "ALTA BLUE CROSS", "CREDIT U OF C", "TAX REFUND", "CARBON REBATE"],
+      "priority": 1,
+      "require_negative": true
+    },
+    "Transfers": {
+      "keywords": ["TRANSFER", "BILL PAYMENT"],
+      "priority": 4
+    },
+    "Other": {
+      "keywords": [],
+      "priority": 999
+    }
+  }
+}
