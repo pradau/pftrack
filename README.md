@@ -145,15 +145,21 @@ HTML reports are self-contained (no external dependencies) and can be opened in 
 Categories are defined in two configuration files:
 
 #### Public Configuration (`config.json`)
-Contains generic, non-confidential keywords that can be safely shared publicly. This file is included in the repository.
+Contains only generic, non-confidential keywords (e.g., "GROCERY", "RESTAURANT", "GAS") that work for most users. This file is included in the repository and safe to share publicly.
 
 #### Private Configuration (`config.private.json`)
-Contains personal merchant names, specific store locations, and other confidential transaction keywords. This file is **excluded from git** via `.gitignore` to protect your privacy.
+Contains specific merchant names, store locations, chain names, and other location-specific transaction keywords. This file is **excluded from git** via `.gitignore` to protect your privacy.
+
+**Examples of what goes in private config:**
+- Specific store names: "SAVE ON FOODS", "COSTCO", "MCDONALD"
+- Location-specific: "PARKDALE GAS", "CALGARY AIRPORT"
+- Specific companies: "ENMAX", "TELUS", "SHAW CABLESYSTEMS"
+- Personal merchants: Your local restaurants, stores, etc.
 
 **Setup:**
 1. Copy `config.private.json.example` to `config.private.json`
-2. Add your personal merchant names and transaction keywords
-3. The system automatically merges both configs when categorizing transactions
+2. Add your specific merchant names and transaction keywords
+3. The system automatically merges both configs when categorizing transactions (private keywords extend public ones)
 
 ### Budget Configuration
 

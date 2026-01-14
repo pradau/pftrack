@@ -99,50 +99,51 @@ class CategoryClassifier:
                 self.auto_tagging_rules[tag_name] = tag_config.copy()
     
     def _get_default_categories(self) -> Dict[str, Dict]:
-        """Get default category definitions with keyword patterns.
+        """Get default category definitions with generic keyword patterns.
+        
+        These are generic keywords that work for most users. Specific merchant names
+        should be added via config.json or config.private.json.
         
         Returns:
             Dict mapping category names to their configuration
         """
         return {
             "Groceries": {
-                "keywords": ["GROCERY", "CO-OP", "SUPERSTORE", "SAFEWAY", "WALMART", "COSTCO", "NO FRILLS"],
-                "priority": 1
+                "keywords": ["GROCERY", "SUPERMARKET", "MARKET"],
+                "priority": 2
             },
             "Restaurants": {
-                "keywords": ["RESTAURANT", "MCDONALD", "STARBUKO", "PIZZA", "TIM HORTONS", "SUBWAY", 
-                            "PEKING GARDEN", "SHAWARMA", "KOREAN VILLAGE"],
+                "keywords": ["RESTAURANT", "COFFEE", "CAFE", "CUISINE", "KITCHEN", "BAKERY", "RESTAU"],
                 "priority": 1
             },
             "Gas/Transportation": {
-                "keywords": ["GAS", "PETRO", "SHELL", "PARKING", "ESSO", "MOBIL"],
+                "keywords": ["GAS", "PETRO", "SHELL", "PARKING", "ESSO", "MOBIL", "FUEL"],
                 "priority": 1
             },
             "Utilities": {
-                "keywords": ["TELUS", "ENMAX", "UTILITY BILL", "HYDRO", "ELECTRIC"],
-                "priority": 2
+                "keywords": ["UTILITY", "UTILITY BILL", "HYDRO", "ELECTRIC", "WATER", "GAS BILL"],
+                "priority": 3
             },
             "Housing": {
-                "keywords": ["MORTGAGE", "RENT", "INSURANCE INTACT", "PROPERTY TAX"],
+                "keywords": ["MORTGAGE", "RENT", "PROPERTY TAX", "HOME INSURANCE"],
                 "priority": 1
             },
             "Shopping": {
-                "keywords": ["AMAZON", "CANADIAN TIRE", "WINNERS", "DOLLARAMA", "LONDON DRUGS", 
-                            "GOODWILL", "PLATO'S CLOSET", "FAIR'S FAIR"],
-                "priority": 2
+                "keywords": ["AMAZON", "STORE", "SHOP", "RETAIL"],
+                "priority": 1
             },
             "Entertainment": {
-                "keywords": ["AMAZON CHANNELS", "ONEBOOKSHEL", "NETFLIX", "SPOTIFY"],
+                "keywords": ["NETFLIX", "SPOTIFY", "STREAMING", "THEATRE", "BOOK", "BOOKSTORE", "MOVIE"],
                 "priority": 1
             },
             "Income": {
-                "keywords": ["PAYROLL", "DEPOSIT", "INTEREST"],
+                "keywords": ["PAYROLL", "DEPOSIT", "INTEREST", "CASH BACK"],
                 "priority": 1,
                 "require_negative": True  # Income has negative amount
             },
             "Transfers": {
                 "keywords": ["TRANSFER", "BILL PAYMENT"],
-                "priority": 3
+                "priority": 4
             },
             "Other": {
                 "keywords": [],

@@ -6,7 +6,7 @@
       "priority": 1
     },
     "Alcohol": {
-      "keywords": ["LIQUOR"],
+      "keywords": ["LIQUOR", "WINE", "SPIRIT", "BEER"],
       "priority": 1
     },
     "Computer": {
@@ -18,27 +18,27 @@
       "priority": 1
     },
     "Groceries": {
-      "keywords": ["GROCERY", "CO-OP", "SUPERSTORE", "SAFEWAY", "WALMART", "WAL-MART", "COSTCO", "NO FRILLS", "SUPERMARKET"],
+      "keywords": ["GROCERY", "SUPERMARKET", "MARKET"],
       "priority": 2
     },
     "Restaurants": {
-      "keywords": ["RESTAURANT", "MCDONALD", "STARBUKO", "PIZZA", "TIM HORTONS", "SUBWAY", "PEKING GARDEN", "SHAWARMA", "KOREAN VILLAGE", "COFFEE", "CAFE", "CUISINE", "CHILIS", "STARBUCKS", "KITCHEN", "CONCESSION", "BAKERY", "RESTAU", "SUSHI", "PARIS BAGUETTE", "BURRITOS", "KOMBUCHA", "ICECREAM", "VENDING", "CATERING", "GLOBEFISH", "BREWING"],
+      "keywords": ["RESTAURANT", "COFFEE", "CAFE", "CUISINE", "KITCHEN", "BAKERY", "RESTAU", "SUSHI", "BURRITOS", "VENDING", "CATERING"],
       "priority": 1
     },
     "Gas/Transportation": {
-      "keywords": ["GAS", "PETRO", "SHELL", "PARKING", "ESSO", "MOBIL"],
+      "keywords": ["GAS", "PETRO", "SHELL", "PARKING", "ESSO", "MOBIL", "FUEL"],
       "priority": 1
     },
     "Utilities": {
-      "keywords": ["ENMAX", "UTILITY BILL", "HYDRO", "ELECTRIC"],
+      "keywords": ["UTILITY", "HYDRO", "ELECTRIC", "WATER", "GAS BILL"],
       "priority": 3
     },
     "Housing": {
-      "keywords": ["MORTGAGE", "RENT", "INSURANCE INTACT", "PROPERTY TAX"],
+      "keywords": ["MORTGAGE", "RENT", "PROPERTY TAX", "HOME INSURANCE"],
       "priority": 1
     },
     "Shopping": {
-      "keywords": ["AMAZON", "CANADIAN TIRE", "DOLLARAMA", "LONDON DRUGS"],
+      "keywords": ["AMAZON", "STORE", "SHOP", "RETAIL"],
       "priority": 1
     },
     "Clothing": {
@@ -46,11 +46,11 @@
       "priority": 1
     },
     "Health": {
-      "keywords": ["YOGA", "DENTAL"],
+      "keywords": ["YOGA", "DENTAL", "PHARMACY", "MEDICAL"],
       "priority": 1
     },
     "Pets": {
-      "keywords": ["VETERINARY"],
+      "keywords": ["VETERINARY", "PET", "ANIMAL"],
       "priority": 0
     },
     "Finance": {
@@ -58,15 +58,15 @@
       "priority": 1
     },
     "Travel": {
-      "keywords": ["HOTEL"],
+      "keywords": ["HOTEL", "AIRLINE", "TRAVEL"],
       "priority": 0
     },
     "Entertainment": {
-      "keywords": ["AMAZON CHANNELS", "NETFLIX", "SPOTIFY", "TICKETMASTER", "THEATRE", " BOOK ", "BOOK", " BOOKSTORE ", "BOOKSTORE", "DISNEY PLUS"],
+      "keywords": ["NETFLIX", "SPOTIFY", "TICKETMASTER", "THEATRE", "BOOK", "BOOKSTORE", "STREAMING", "MOVIE"],
       "priority": 1
     },
     "Income": {
-      "keywords": ["PAYROLL", "DEPOSIT", "INTEREST", "CASH BACK CREDIT"],
+      "keywords": ["PAYROLL", "DEPOSIT", "INTEREST", "CASH BACK"],
       "priority": 1,
       "require_negative": true
     },

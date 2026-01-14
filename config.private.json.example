@@ -21,20 +21,41 @@
     "Groceries": {
       "keywords": [
         "YOUR LOCAL GROCERY STORE",
-        "YOUR FAVORITE MARKET"
+        "SAVE ON FOODS",
+        "CO-OP",
+        "COSTCO"
       ],
       "priority": 2
     },
     "Restaurants": {
       "keywords": [
         "YOUR FAVORITE RESTAURANT",
-        "LOCAL CAFE NAME"
+        "LOCAL CAFE NAME",
+        "MCDONALD",
+        "STARBUCKS"
       ],
       "priority": 1
     },
+    "Gas/Transportation": {
+      "keywords": [
+        "PARKDALE GAS",
+        "YOUR LOCAL GAS STATION"
+      ],
+      "priority": 1
+    },
+    "Utilities": {
+      "keywords": [
+        "ENMAX",
+        "TELUS",
+        "YOUR UTILITY COMPANY"
+      ],
+      "priority": 3
+    },
     "Shopping": {
       "keywords": [
-        "YOUR LOCAL STORES"
+        "YOUR LOCAL STORES",
+        "CANADIAN TIRE",
+        "WINNERS"
       ],
       "priority": 1
     },
