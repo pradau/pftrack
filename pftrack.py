@@ -18,6 +18,7 @@ from budget import BudgetManager
 from categorizer import CategoryClassifier
 from csv_parser import parse_debit_csv, parse_visa_csv
 from html_reporter import HTMLReportGenerator
+from interactive_categorizer import InteractiveCategorizer
 from reporter import ReportGenerator
 from transaction_filter import TransactionFilter
 
@@ -134,6 +135,12 @@ def parse_args() -> argparse.Namespace:
         help='Search transactions by keyword in description'
     )
     
+    parser.add_argument(
+        '--interactive',
+        action='store_true',
+        help='Interactive categorization mode - review and re-categorize transactions'
+    )
+    
     return parser.parse_args()
 
 
@@ -183,9 +190,19 @@ def main() -> int:
         print(f"Loaded {len(debit_transactions)} debit transactions and "
               f"{len(visa_transactions)} Visa transactions")
         
-        # Apply transaction filters if specified
-        if args.category or args.merchant or args.min_amount is not None or \
-           args.max_amount is not None or args.search:
+        # Apply date filters if specified (for both interactive and normal modes)
+        if start_date or end_date:
+            all_transactions = TransactionFilter.filter_by_date_range(
+                all_transactions,
+                start_date=start_date,
+                end_date=end_date
+            )
+            if start_date or end_date:
+                print(f"Filtered to {len(all_transactions)} transactions in date range")
+        
+        # Apply other transaction filters if specified (only for non-interactive mode)
+        if not args.interactive and (args.category or args.merchant or args.min_amount is not None or
+           args.max_amount is not None or args.search):
             print("Applying transaction filters...")
             all_transactions = TransactionFilter.filter_all(
                 all_transactions,
@@ -194,8 +211,8 @@ def main() -> int:
                 min_amount=args.min_amount,
                 max_amount=args.max_amount,
                 search=args.search,
-                start_date=start_date,
-                end_date=end_date
+                start_date=None,  # Already filtered above
+                end_date=None     # Already filtered above
             )
             print(f"Filtered to {len(all_transactions)} transactions")
         
@@ -206,6 +223,28 @@ def main() -> int:
         classifier = CategoryClassifier(config_path)
         categorized_transactions = classifier.categorize_all(all_transactions)
         print(f"Categorized {len(categorized_transactions)} transactions")
+        
+        # Interactive mode
+        if args.interactive:
+            print("\n=== Interactive Categorization Mode ===")
+            private_config_path = config_path.parent / 'config.private.json'
+            interactive_categorizer = InteractiveCategorizer()
+            stats = interactive_categorizer.categorize_interactively(
+                categorized_transactions,
+                classifier,
+                private_config_path
+            )
+            
+            print("\n=== Categorization Summary ===")
+            print(f"Total transactions: {stats['total']}")
+            print(f"Selected for review: {stats['selected']}")
+            print(f"Reviewed: {stats['reviewed']}")
+            print(f"Accepted (no change): {stats['accepted']}")
+            print(f"Re-categorized: {stats['re_categorized']}")
+            print(f"Keywords added: {stats['keywords_added']}")
+            print(f"Skipped: {stats['skipped']}")
+            
+            return 0
         
         # Analyze spending
         print("Analyzing spending patterns...")

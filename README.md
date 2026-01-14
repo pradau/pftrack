@@ -62,6 +62,7 @@ Options:
 - `--html`: Generate HTML reports in addition to CSV reports
 - `--html-only`: Generate only HTML reports (skip CSV reports)
 - `--qa`: Generate QA comparison report for reviewing transaction categorizations
+- `--interactive`: Interactive categorization mode - review and re-categorize transactions
 
 ### Examples
 
@@ -100,6 +101,71 @@ Generate QA comparison report to review transaction categorizations:
 ```bash
 python pftrack.py --qa
 ```
+
+### Interactive Categorization Mode
+
+The interactive mode allows you to quickly review and re-categorize transactions, then automatically save merchant keywords to `config.private.json`:
+
+```bash
+python pftrack.py --interactive
+```
+
+Or with a date range:
+
+```bash
+python pftrack.py --interactive --start-date 01/01/2025 --end-date 01/31/2025
+```
+
+**How it works:**
+
+1. **Selection Phase**: All transactions are displayed in a numbered list. You select which transactions to review by entering their numbers (e.g., "12 21 41") or 'a' for all.
+
+2. **Review Phase**: For each selected transaction:
+   - Transaction details are displayed (date, description, amount, current category)
+   - You can press Enter to accept the current category
+   - Or enter a number to select a different category
+   - Or press 's' to skip, 'q' to quit
+
+3. **Keyword Saving**: When you re-categorize a transaction:
+   - The merchant name is automatically extracted from the description
+   - You're asked to confirm before adding it to `config.private.json`
+   - The keyword is added to the selected category
+
+**Example Session:**
+
+```
+=== All Transactions (45 total) ===
+#   Date       Description              Amount    Category
+1   01/15/2025 SAVE ON FOODS           $45.23    Groceries
+2   01/16/2025 SQ *SESAME               $12.50   Other
+...
+
+Enter transaction numbers to review (space-separated, e.g., "2 45 12"):
+Or 'a' for all, 'q' to quit: 2 45
+
+=== Reviewing Transaction 1 of 2 ===
+Date: 01/16/2025
+Description: SQ *SESAME
+Amount: $12.50
+Current Category: Other
+
+Available Categories:
+  1. Groceries
+  2. Restaurants
+  ...
+  19. Other (current)
+
+[Enter] Accept current category | [1-19] Select new category | [s] Skip | [q] Quit: 2
+
+Extracted keyword: "SESAME"
+Add "SESAME" to "Restaurants" category? [y/n]: y
+✓ Added "SESAME" to config.private.json
+```
+
+**Notes:**
+- A backup of `config.private.json` is created before the first modification
+- Keywords are only added if they don't already exist in the category
+- The interactive mode exits after review (no reports are generated)
 
 Combine options:
 

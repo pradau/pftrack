@@ -40,7 +40,7 @@ class TestCategoryClassifier(unittest.TestCase):
         transaction = Transaction(
             date=datetime(2025, 1, 15),
             account_type='chequing',
-            description='CO-OP GROCERY STORE',
+            description='SUPERMARKET',
             amount=50.00
         )
         
@@ -85,13 +85,13 @@ class TestCategoryClassifier(unittest.TestCase):
             Transaction(
                 date=datetime(2025, 1, 15),
                 account_type='chequing',
-                description='CO-OP STORE',
+                description='SUPERMARKET',
                 amount=50.00
             ),
             Transaction(
                 date=datetime(2025, 1, 16),
                 account_type='visa',
-                description='MCDONALDS',
+                description='RESTAURANT',
                 amount=10.00
             )
         ]
