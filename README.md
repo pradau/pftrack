@@ -140,12 +140,26 @@ HTML reports are self-contained (no external dependencies) and can be opened in 
 
 ## Category Configuration
 
-Categories are defined in `config.json`. Each category includes:
+Categories are defined in two configuration files:
+
+### Public Configuration (`config.json`)
+Contains generic, non-confidential keywords that can be safely shared publicly. This file is included in the repository.
+
+### Private Configuration (`config.private.json`)
+Contains personal merchant names, specific store locations, and other confidential transaction keywords. This file is **excluded from git** via `.gitignore` to protect your privacy.
+
+**Setup:**
+1. Copy `config.private.json.example` to `config.private.json`
+2. Add your personal merchant names and transaction keywords
+3. The system automatically merges both configs when categorizing transactions
+
+**Configuration Structure:**
+Each category includes:
 - `keywords`: List of keywords to match in transaction descriptions
 - `priority`: Lower numbers = higher priority (more specific patterns checked first)
 - `require_negative`: Optional flag for income categories (requires negative amount)
 
-You can customize categories by editing `config.json` or providing a custom config file with `--config`.
+You can customize categories by editing `config.json` and/or `config.private.json`, or provide custom config files with `--config`.
 
 ## Default Categories
 

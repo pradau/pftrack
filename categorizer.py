@@ -21,24 +21,82 @@ class CategoryClassifier:
     keyword patterns for matching.
     """
     
-    def __init__(self, config_path: Optional[Path] = None):
+    def __init__(self, config_path: Optional[Path] = None, 
+                 private_config_path: Optional[Path] = None):
         """Initialize classifier with category rules.
         
         Args:
             config_path: Path to JSON config file with category definitions.
                          If None, uses default categories.
+            private_config_path: Path to private/confidential config file.
+                                If None, looks for config.private.json in same directory as config_path.
         """
         self.auto_tagging_rules = {}
         
+        # Load public config
         if config_path and config_path.exists():
             config = self._load_config(config_path)
             self.categories = config.get('categories', self._get_default_categories())
             self.auto_tagging_rules = config.get('auto_tagging', {})
+            
+            # Load private config if available
+            if private_config_path is None:
+                # Default to config.private.json in same directory as config_path
+                private_config_path = config_path.parent / 'config.private.json'
+            
+            if private_config_path and private_config_path.exists():
+                private_config = self._load_config(private_config_path)
+                # Merge private config into categories (private keywords extend public ones)
+                self._merge_config(private_config)
         else:
             self.categories = self._get_default_categories()
         
         # Sort categories by priority (more specific patterns first)
         self._sort_categories_by_priority()
+    
+    def _merge_config(self, private_config: Dict) -> None:
+        """Merge private config into existing categories and auto-tagging rules.
+        
+        Private config keywords are added to existing categories.
+        Private auto-tagging rules extend public ones.
+        
+        Args:
+            private_config: Private configuration dictionary
+        """
+        # Merge categories
+        private_categories = private_config.get('categories', {})
+        for category_name, category_config in private_categories.items():
+            if category_name in self.categories:
+                # Merge keywords (extend existing list)
+                existing_keywords = set(self.categories[category_name].get('keywords', []))
+                private_keywords = set(category_config.get('keywords', []))
+                self.categories[category_name]['keywords'] = list(existing_keywords | private_keywords)
+                # Private config can override priority if specified
+                if 'priority' in category_config:
+                    self.categories[category_name]['priority'] = category_config['priority']
+                # Merge other properties
+                for key, value in category_config.items():
+                    if key not in ['keywords', 'priority']:
+                        self.categories[category_name][key] = value
+            else:
+                # Add new category from private config
+                self.categories[category_name] = category_config.copy()
+        
+        # Merge auto-tagging rules
+        private_auto_tagging = private_config.get('auto_tagging', {})
+        for tag_name, tag_config in private_auto_tagging.items():
+            if tag_name in self.auto_tagging_rules:
+                # Merge keywords and categories
+                existing_keywords = set(self.auto_tagging_rules[tag_name].get('keywords', []))
+                private_keywords = set(tag_config.get('keywords', []))
+                self.auto_tagging_rules[tag_name]['keywords'] = list(existing_keywords | private_keywords)
+                
+                existing_categories = set(self.auto_tagging_rules[tag_name].get('categories', []))
+                private_categories = set(tag_config.get('categories', []))
+                self.auto_tagging_rules[tag_name]['categories'] = list(existing_categories | private_categories)
+            else:
+                # Add new auto-tagging rule
+                self.auto_tagging_rules[tag_name] = tag_config.copy()
     
     def _get_default_categories(self) -> Dict[str, Dict]:
         """Get default category definitions with keyword patterns.

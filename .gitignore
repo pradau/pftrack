@@ -44,3 +44,6 @@ backups/
 
 # Goals
 goals.json
+
+# Confidential configuration (contains personal merchant names)
+config.private.json

@@ -1,0 +1,50 @@
+{
+  "_comment": "This is an example template for config.private.json",
+  "_instructions": "Copy this file to config.private.json and add your personal merchant names and transaction keywords",
+  "_note": "This file is excluded from git via .gitignore to keep your personal data private",
+  
+  "auto_tagging": {
+    "tax-deductible": {
+      "keywords": ["WORK", "BUSINESS", "OFFICE", "PROFESSIONAL"],
+      "categories": ["Work"]
+    },
+    "reimbursable": {
+      "keywords": ["TRAVEL", "MEAL", "EXPENSE"],
+      "categories": ["Travel", "Restaurants"]
+    },
+    "work-related": {
+      "keywords": ["WORK", "OFFICE", "BUSINESS"],
+      "categories": ["Work"]
+    }
+  },
+  "categories": {
+    "Groceries": {
+      "keywords": [
+        "YOUR LOCAL GROCERY STORE",
+        "YOUR FAVORITE MARKET"
+      ],
+      "priority": 2
+    },
+    "Restaurants": {
+      "keywords": [
+        "YOUR FAVORITE RESTAURANT",
+        "LOCAL CAFE NAME"
+      ],
+      "priority": 1
+    },
+    "Shopping": {
+      "keywords": [
+        "YOUR LOCAL STORES"
+      ],
+      "priority": 1
+    },
+    "Income": {
+      "keywords": [
+        "YOUR EMPLOYER NAME",
+        "SPECIFIC INCOME SOURCES"
+      ],
+      "priority": 1,
+      "require_negative": true
+    }
+  }
+}
